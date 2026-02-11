@@ -1,0 +1,29 @@
+{
+  "name": "maa-se-2026-tangles",
+  "version": "0.0.1",
+  "description": "Tangles and computational algebraic geometry",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "format": "prettier -w ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-torrance/maa-se-2026-tangles.git"
+  },
+  "author": "Doug Torrance",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-torrance/maa-se-2026-tangles/issues"
+  },
+  "homepage": "https://github.com/d-torrance/maa-se-2026-tangles#readme",
+  "dependencies": {
+    "reveal.js": "^5.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.3",
+    "prettier": "^3.8.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.105.1"
+  }
+}
