@@ -18,6 +18,10 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
 
   deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write   
     runs-on: ubuntu-latest
     steps:
       - uses: /actions/deploy-pages@v4
