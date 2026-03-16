@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/d-torrance/maa-se-2026-tangles#readme",
   "dependencies": {
+    "highlightjs-macaulay2": "^0.5.0",
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {
