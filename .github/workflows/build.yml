@@ -18,5 +18,6 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
 
   deploy:
+    runs-on: ubuntu-latest
     steps:
       - uses: /actions/deploy-pages@v4
