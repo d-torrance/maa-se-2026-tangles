@@ -163,11 +163,20 @@ $\mathbf k$-component of $\mathbf v_5$ is $\sqrt 3 i$...
 	  </p>
 	  <p>$\mathbf v_2=\langle\cos\theta, 0,\sin\theta\rangle$
 	  </p>
-	 
+	</section>
 
+	<section>
+	  <h2>Visualizing the curve</h2>
+
+	  <p>$\theta = \frac{\pi}{2}, \frac{3\pi}{4}, \pi$</p>
+
+	  <div id="6-tangle-curve"></div>
 
 	</section>
 
+	<section>
+	  <h2>Thank you!</h2>
+	</section>
 
       </div>
     </div>
@@ -182,7 +191,6 @@ $\mathbf k$-component of $\mathbf v_5$ is $\sqrt 3 i$...
 	  let z = [];
 	  let c = [];
 	  let p = [0, 0, 0];
-	  
 
 	  for (let i = 0; i < n; i++) {
 	      if (i > 0) {
@@ -195,7 +203,7 @@ $\mathbf k$-component of $\mathbf v_5$ is $\sqrt 3 i$...
 		  c.push(157*i + t);
 	      }
 	  }
-	  
+
 	  Plotly.newPlot(div, [{
 	      type: 'scatter3d',
 	      mode: 'lines',
@@ -222,6 +230,12 @@ $\mathbf k$-component of $\mathbf v_5$ is $\sqrt 3 i$...
 	  [[1, 0, 0], [0, 1, 0], [0, 0, -1], [-1, 0, 0], [0, -1, 0], [0, 0, 1],
 	   [1, 0, 0], [0, 1, 0], [0, 0, 1], [-1, 0, 0], [0, -1, 0], [0, 0, -1]],
 	  "6-tangle-point");
+
+      plot(
+	  [[1, 0, 0], [0, 1, 0], [-1.000000000000001, 0, 0], [0, 0, 1.000000000000008], [0, -1.000000000000005, 0], [0, 0, -1.000000000000002],
+	   [1, 0, 0], [0, 1, 0], [-.7000000000000002, 0, .714142842854276], [-.6649002731494938, .3649002731495382, -.6517326272492103], [.3649002731495249, -.6026490066225157, -.7096914579395212], [0, -.7622512665269764, .6472812423344451],
+	   [1, 0, 0], [0, 1, 0], [0, 0, 1], [0, -1.000000000000001, 0], [-.9999999999999998, 0, 0], [0, 0, -1]],
+	  "6-tangle-curve");
 
 
     </script>
