@@ -6,31 +6,224 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown>
-          <textarea data-template>
-            ## Tangles and computational algebraic geometry
+        <section>
+	  <h2>Tangles and computational algebraic geometry</h2>
 
-            Douglas A. Torrance w/ Katie Prowell  
-            Piedmont University  
-            MAA-SE 2026
-            ---
-            ## Introduce Tangles
+	  Douglas A. Torrance w/ Katie Prowell<br>
+          Piedmont University<br>
+          MAA-SE 2026<br>
+	</section>
 
-            Maybe a picture or something
-            ---
-            ## Tangent vectors
+	<section>
+	  <h2>What is a Tangle?</h2>
 
-            For every joint $\mathbf p_i$ of an $n$-Tangle , consider the unit tangent vector $\mathbf v_i$ at $\mathbf p_i$.  Then 
-            ---
-            ```m2
-            R = QQ[x,y,z,w]
-            I = monomialCurveIdeal(R, {1,2,3})
-            C = res I
-            ```
-          </textarea>
+	  <p>
+	    A Tangle is a $C^1$ space curve formed by the union of quarter-circles with the same radius.
+	  </p>
+
+	  <img src="img/tangles.png" height="400px">
         </section>
+
+	<section>
+	  <h2>Tangles and algebraic geometry</h2>
+
+	  <p><u>Theorem</u> (Prowell, T.)</p>
+
+	  <p>
+	    One-to-one correspondence between $n$-Tangles and sequences of vectors $\mathbf v_0,\ldots,\mathbf v_{n-1}\in\mathbb R^3$ satisfying
+
+	    <ul>
+	      <li>$\|\mathbf v_i\| = r$
+	      <li>$\mathbf v_0 + \cdots + \mathbf v_{n-1} = 0$</li>
+	      <li>$\mathbf v_i \cdot \mathbf v_{i+1} = 0$</li>
+	    </ul>
+	  </p>
+
+	  <p>System of homogeneous polynomial equations in $3n + 1$ variables $\implies$ "Tangle variety" in $\mathbb P^{3n}$</p>
+
+
+	</section>
+
+	<section>
+
+	  <h2>Simplification</h2>
+
+	  <p>
+	    Assume $r = 1$, $\mathbf v_0 = \mathbf i$, and $\mathbf v_1 = \mathbf j$.
+	  </p>
+
+	  <p>
+	    Now in $\mathbb A^{3n -6}$.
+	  </p>
+
+	</section>
+
+	<section>
+
+	<h2>Macaulay2</h2>
+
+	<p>Software system for research in algebraic geometry and commutative algebra.</p>
+
+<pre><code class="language-macaulay2">
+i3 : affineTangleVariety 4
+
+o3 = ideal (v   , v    + 1, v   , v   , v   , v    + 1)
+             3,2   3,1       3,0   2,2   2,1   2,0
+
+o3 : Ideal of QQ[v   ..v   ]
+                  2,0   3,2
+</code></pre>
+
+<p>$\implies \mathbf v_2 = -\mathbf i$ &nbsp; and &nbsp; $\mathbf v_3 = -\mathbf j$ &nbsp; &nbsp; (circle!)</p>
+
+	</section>
+
+	<section>
+	  <h2>No 5-Tangles</h2>
+
+<pre><code class="language-macaulay2">
+i4 : affineTangleVariety 5
+
+o4 = ideal 1
+
+o4 : Ideal of QQ[v   ..v   ]
+                  2,0   4,2
+</code></pre>
+	</section>
+
+	<section>
+
+	  <h2>What about 6-Tangles?</h2>
+
+<pre><code class="language-macaulay2">
+i6 : betti affineTangleVariety 6
+
+            0  1
+o6 = total: 1 16
+         0: 1  6
+         1: .  7
+         2: .  3
+
+o6 : BettiTally
+</code></pre>
+	</section>
+
+	<section>
+	  <h2>Minimal associated primes</h2>
+
+	  Decompose into a union of simpler varieties.
+
+<pre><code class="language-macaulay2">
+i10 : dim \ minimalPrimes affineTangleVariety 6
+
+o10 = {1, 0, 0, 0}
+
+o10 : List
+</code></pre>
+
+<p>1 curve, 3 points</p>
+
+	</section>
+
+	<section>
+	  <h2>Complex-valued 6-Tangle</h2>
+
+<pre><code class="language-macaulay2">
+i12 : last minimalPrimes affineTangleVariety 6
+
+                                                                                                             
+o12 = ideal (v    + 2, v   , v    + 2v   , v    - 3, v    + 2, v    - 2v   , v    + 2, v    - 3, v    + v   ,
+              5,1       5,0   4,2     5,2   4,1       4,0       3,2     5,2   3,1       3,0       2,2    5,2 
+      ------------------------------------------------------------------------------------------------------------
+                       2
+      v   , v    + 2, v    + 3)
+       2,1   2,0       5,2
+
+o12 : Ideal of QQ[v   ..v   ]
+                   2,0   5,2
+</code></pre>
+
+$\mathbf k$-component of $\mathbf v_5$ is $\sqrt 3 i$...
+
+	</section>
+
+	<section>
+	  <h2>Other two points</h2>
+
+	  <p>Reflections of one another</p>
+
+	  <div id="6-tangle-point"></div>
+
+	</section>
+
+	<section>
+	  <h2>The curve</h2>
+	  <p>
+	    $\|\mathbf v_2\| = 1$ &nbsp; and &nbsp; $\mathbf j\cdot\mathbf v_2 = 0$ $\implies$
+	  </p>
+	  <p>$\mathbf v_2=\langle\cos\theta, 0,\sin\theta\rangle$
+	  </p>
+	 
+
+
+	</section>
+
+
       </div>
     </div>
     <script src="js/tangle.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+    <script>
+      function plot(v, div) {
+	  const n = v.length;
+
+	  let x = [];
+	  let y = [];
+	  let z = [];
+	  let c = [];
+	  let p = [0, 0, 0];
+	  
+
+	  for (let i = 0; i < n; i++) {
+	      if (i > 0) {
+		  p = p.map((x,j) => x + v[i-1][j] + v[i][j]);
+	      }
+	      for (let t = 0; t < 157; t++) { // 157 approx = 100*pi/2
+		  x.push(p[0] + Math.sin(t/100)*v[i][0] + (1 - Math.cos(t/100))*v[(i+1)%n][0]);
+		  y.push(p[1] + Math.sin(t/100)*v[i][1] + (1 - Math.cos(t/100))*v[(i+1)%n][1]);
+		  z.push(p[2] + Math.sin(t/100)*v[i][2] + (1 - Math.cos(t/100))*v[(i+1)%n][2]);
+		  c.push(157*i + t);
+	      }
+	  }
+	  
+	  Plotly.newPlot(div, [{
+	      type: 'scatter3d',
+	      mode: 'lines',
+	      x: x,
+	      y: y,
+	      z: z,
+	      opacity: 0.7,
+	      line: {
+		  width: 10,
+		  color: c,
+		  colorscale: 'Viridis'},
+	      margin: {
+		  t: 20, //top margin
+		  l: 20, //left margin
+		  r: 20, //right margin
+		  b: 20 //bottom margin
+	      }
+	  }],
+			 { width: 960 });
+
+      }
+
+      plot(
+	  [[1, 0, 0], [0, 1, 0], [0, 0, -1], [-1, 0, 0], [0, -1, 0], [0, 0, 1],
+	   [1, 0, 0], [0, 1, 0], [0, 0, 1], [-1, 0, 0], [0, -1, 0], [0, 0, -1]],
+	  "6-tangle-point");
+
+
+    </script>
   </body>
 </html>
