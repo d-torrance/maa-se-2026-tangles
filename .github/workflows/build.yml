@@ -14,6 +14,7 @@ jobs:
           mkdir _site
           cp -r fonts _site
           cp -r js _site
+          cp -r img _site
           cp index.html _site
       - uses: actions/upload-pages-artifact@v3
 
